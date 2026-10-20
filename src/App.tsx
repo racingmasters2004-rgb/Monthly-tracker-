@@ -49,6 +49,7 @@ import { ExpenseCategoriesManager } from './components/expenses/ExpenseCategorie
 import { ExpenseRecurringManager } from './components/expenses/ExpenseRecurringManager';
 import { ExpenseReports } from './components/expenses/ExpenseReports';
 import { ExpensePdfModal } from './components/expenses/ExpensePdfModal';
+import { InstallPromptModal } from './components/InstallPromptModal';
 
 export default function App() {
   // Master app state
@@ -69,6 +70,7 @@ export default function App() {
   const [isPlannerPdfOpen, setIsPlannerPdfOpen] = useState<boolean>(false);
   const [isExpensePdfOpen, setIsExpensePdfOpen] = useState<boolean>(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
+  const [isInstallOpen, setIsInstallOpen] = useState<boolean>(false);
   const [isExpenseAddOpen, setIsExpenseAddOpen] = useState<boolean>(false);
   const [editingTransaction, setEditingTransaction] = useState<Transaction | null>(null);
   const [expenseAddInitialType, setExpenseAddInitialType] = useState<'expense' | 'income'>('expense');
@@ -375,6 +377,7 @@ export default function App() {
         setCalendarOpen={setCalendarOpen}
         onHomeClick={handleHomeClick}
         onOpenSettings={() => setIsSettingsOpen(true)}
+        onOpenInstallPrompt={() => setIsInstallOpen(true)}
         profile={state.profile}
       />
 
@@ -579,6 +582,12 @@ export default function App() {
         todayStr={todayStr}
         initialType={expenseAddInitialType}
         editingTransaction={editingTransaction}
+      />
+
+      {/* Phone Install Prompt Modal */}
+      <InstallPromptModal
+        isOpen={isInstallOpen}
+        onClose={() => setIsInstallOpen(false)}
       />
     </div>
   );

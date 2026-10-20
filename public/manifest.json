@@ -1,0 +1,32 @@
+{
+  "id": "/",
+  "name": "Monthly Planner & Expense Tracker",
+  "short_name": "Planner",
+  "description": "Mobile-first paper & navy personal planner and expense tracker with domains, recurring habits, Eisenhower matrix, budgets, and statements.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1F3A52",
+  "background_color": "#FBFAF7",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

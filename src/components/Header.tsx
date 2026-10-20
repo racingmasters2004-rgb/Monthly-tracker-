@@ -8,7 +8,8 @@ import {
   Sparkles,
   CheckCircle2,
   RefreshCw,
-  Wallet
+  Wallet,
+  Smartphone
 } from 'lucide-react';
 import { MainTab, UserProfile } from '../types';
 import { generateQuote } from '../utils/quotes';
@@ -20,6 +21,7 @@ interface HeaderProps {
   setCalendarOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onHomeClick: () => void;
   onOpenSettings: () => void;
+  onOpenInstallPrompt: () => void;
   profile: UserProfile;
 }
 
@@ -30,6 +32,7 @@ export const Header: React.FC<HeaderProps> = ({
   setCalendarOpen,
   onHomeClick,
   onOpenSettings,
+  onOpenInstallPrompt,
   profile,
 }) => {
   const [quote, setQuote] = useState<string>('');
@@ -113,6 +116,17 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="hidden xs:inline">
                 {activeTab === 'planner' ? 'Expenses' : 'Planner'}
               </span>
+            </button>
+
+            {/* Download / Install to Phone button */}
+            <button
+              type="button"
+              onClick={onOpenInstallPrompt}
+              title="Download to Phone / Install App"
+              className="h-[34px] px-2 rounded-lg border-[1.5px] border-[#2A7F73] bg-[#EBF7EE] flex items-center gap-1 text-[#2A7F73] hover:bg-[#DDF0E2] active:scale-95 transition-all font-mono-code text-[11px] font-bold"
+            >
+              <Smartphone className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Install</span>
             </button>
 
             {/* Settings button */}
