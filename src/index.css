@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #10202B;
+  --paper: #FBFAF7;
+  --paper-2: #F1EEE6;
+  --paper-3: #E6E1D5;
+  --line: #DCD6C7;
+  --line-strong: #C5BCAB;
+  --navy: #1F3A52;
+  --teal: #2A7F73;
+  --plum: #7A4F82;
+  --grey: #5B6670;
+  --high: #D9531E;
+  --med: #D9A017;
+  --low: #4C8557;
+  --overdue: #C4331E;
+  --today: #D9A017;
+  --tomorrow: #2A6FA3;
+  --future: #8C8674;
+  --done: #9AA39A;
+  --brass: #B8860B;
+  --brass-soft: #D9A017;
+  --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --disp: 'IBM Plex Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow-1: 0 1px 3px rgba(16, 32, 43, 0.08);
+  --shadow-2: 0 8px 24px rgba(16, 32, 43, 0.12);
+  --shadow-sheet: 0 -8px 30px rgba(16, 32, 43, 0.15);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  min-height: 100vh;
+  min-height: 100dvh;
+  touch-action: manipulation;
+  overscroll-behavior-y: none;
+}
+
+h1, h2, h3, h4, .font-disp {
+  font-family: var(--disp);
+}
+
+.font-mono-code {
+  font-family: var(--mono);
+}
+
+::selection {
+  background: var(--brass-soft);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+
+/* Keyframe animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes sheetUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes idleBlink {
+  0%, 100% { background-color: var(--paper); }
+  50% { background-color: #FBD3CD; }
+}
+
+.blink-3x {
+  animation: idleBlink 0.6s ease-in-out 3;
+}
+
+@keyframes sealPop {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+  18% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+  28% { transform: translate(-50%, -50%) scale(1); }
+  78% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -55%) scale(0.96); }
+}
+
+.seal-stamp {
+  position: fixed;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 16px 28px;
+  border-radius: 14px;
+  border: 2px solid var(--brass-soft);
+  font-family: var(--disp);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  text-align: center;
+  box-shadow: var(--shadow-2);
+  animation: sealPop 1.7s var(--ease) forwards;
+  pointer-events: none;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  opacity: 0.95;
+  border-radius: 1px;
+  animation: confettiFall 1.5s ease-in forwards;
+  pointer-events: none;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(420deg);
+    opacity: 0;
+  }
+}
+
+/* Priority Dots */
+.prio-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.prio-dot.high { background: var(--high); }
+.prio-dot.medium { background: var(--med); }
+.prio-dot.low { background: var(--low); }
+
+/* Journal Lined Pad */
+.journal-pad {
+  width: 100%;
+  min-height: 160px;
+  resize: vertical;
+  border: 1.5px solid var(--ink);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: var(--disp);
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 2;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(to bottom, transparent, transparent 33px, var(--line) 34px);
+  background-attachment: local;
+  transition: border-color 0.15s;
+}
+.journal-pad:focus {
+  outline: none;
+  border-color: var(--teal);
+}
+.journal-pad::placeholder {
+  color: var(--grey);
+  font-style: italic;
+}
+
+/* Ghost recurring items pulse */
+@keyframes ghostPulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+.cal-ghost-pulse {
+  animation: ghostPulse 2.5s infinite;
+}

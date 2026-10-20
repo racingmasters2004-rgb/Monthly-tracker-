@@ -1,0 +1,6 @@
+{
+  "name": "Monthly Planner & Expense Tracker",
+  "description": "Mobile-first paper & navy personal planner and expense tracker with domains, recurring habits, Eisenhower matrix, budgets, and statements.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
